@@ -1,3 +1,4 @@
+from integration_exception import IntegrationError
 from enum import Enum
 import json
 import re
@@ -692,10 +693,6 @@ class Review:
             self.log.warning(f'Failed to update_review_description. Exception [{answer.text}]')
             if answer.status_code == StatusCode.EXCEPTION.value:
                 raise IntegrationError(answer.text)
-
-
-class IntegrationError(Exception):
-    pass
 
 
 class IssueStatus(Enum):

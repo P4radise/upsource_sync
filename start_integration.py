@@ -1,3 +1,4 @@
+from integration_exception import IntegrationError
 import sys
 import subprocess
 
@@ -5,12 +6,12 @@ import subprocess
 try:
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'python_dependencies.txt'])
 except Exception as e:
-    raise Exception(f'Failed to install package. Exception [{str(e)}]')
+    raise IntegrationError(f'Failed to install package. Exception [{str(e)}]')
 
 
 from jsonschema import validate
 from integration_log import build_logger
-from upsource_integration import Issue, IssueTask, Review, Integration, IntegrationError
+from upsource_integration import Issue, IssueTask, Review, Integration
 import json
 import re
 
