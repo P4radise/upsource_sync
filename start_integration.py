@@ -3,10 +3,7 @@ import sys
 import subprocess
 
 
-try:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'python_dependencies.txt'])
-except Exception as e:
-    raise IntegrationError(f'Failed to install package. Exception [{str(e)}]')
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', '-r', 'python_dependencies.txt'])
 
 
 from jsonschema import validate
